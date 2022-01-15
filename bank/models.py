@@ -1,15 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User, AbstractUser
 
-class Client(models.Model):
-    cpf = models.BigIntegerField(blank=False, null=False, unique=True)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-
+class User(AbstractUser):
+    cpf = models.BigIntegerField(blank=False, null=False)
+    
 class Account(models.Model):
     agency = models.IntegerField(blank=False, null=False)
     account = models.IntegerField()
-    cpf_account = models.OneToOneField(
-        Client,  
+    user = models.OneToOneField(
+        User,  
         on_delete=models.CASCADE,
         primary_key=True,
     )    
