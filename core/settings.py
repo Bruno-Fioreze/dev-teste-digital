@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles', 
     #3rd party
     #local apps,
-    'bank'
+    'bank',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -136,4 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # User Models
 
+ACCOUNT_AUTHENTICATION_METHOD = 'cpf'
 AUTH_USER_MODEL = "bank.User"
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False

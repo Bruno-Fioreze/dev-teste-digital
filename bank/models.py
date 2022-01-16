@@ -2,17 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 
 class User(AbstractUser):
-    cpf = models.BigIntegerField(blank=False, null=False)
-    
+    username = None
+    cpf = models.BigIntegerField(blank=False, null=False, unique=True)
+    USERNAME_FIELD = 'cpf'
+        
 class Account(models.Model):
     agency = models.IntegerField(blank=False, null=False)
     account = models.IntegerField()
     user = models.OneToOneField(
-        User,  
+        User,
         on_delete=models.CASCADE,
         primary_key=True,
     )    
-    saldo =  models.DecimalField( max_digits = 6, decimal_places = 2)
+    saldo =  models.DecimalField( max_digits = 6, decimal_places = 2, default=0)
 
 class Operation(models.Model):
     type_operation = models.IntegerField()
