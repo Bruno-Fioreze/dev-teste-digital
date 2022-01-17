@@ -141,7 +141,7 @@ Caso esteja utilizando windows troque o python3 por python.
 	> python3 manage.py test bank.tests.TransactionBank.test_transaction_bank_get_200
 	
 ## Um pouco sobre a aplicação.
-A aplicação foi feita utilizando Python, Django, Django-Rest, Docker e UnitTest
+A aplicação foi feita utilizando Python, Django, Django-Rest, Docker e UnitTest.
 Ela é bem simples e todo o código desenvolvido se encontra no app bank.
 
 ## Observações
