@@ -17,12 +17,12 @@ class Account(models.Model):
     saldo =  models.DecimalField( max_digits = 6, decimal_places = 2, default=0)
 
 class Operation(models.Model):
-    type_operation = models.IntegerField()
+    id = models.IntegerField(primary_key=True)
     name_operation = models.CharField(max_length=30)
-    max_value = models.DecimalField( max_digits = 6, decimal_places = 2)
+    max_value = models.DecimalField( max_digits = 6, decimal_places = 2, null=True)
 
-class Transacoes(models.Model):
-    valor = models.DecimalField( max_digits = 6, decimal_places = 2)
+class Transaction(models.Model):
+    value = models.DecimalField( max_digits = 6, decimal_places = 2)
     account_shipping = models.ForeignKey(
         Account, 
         on_delete=models.CASCADE,
