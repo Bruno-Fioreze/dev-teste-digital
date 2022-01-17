@@ -13,7 +13,7 @@ Caso esteja utilizando windows troque o python3 por python.
 
 - Execute o seguinte comando:
 - sudo docker run -p 3306:3306 --name db_digital -e MYSQL_ROOT_PASSWORD=db_digital -d mysql:latest
-- Conecte-se ao banco de dados utlizando os dados do arquivo .env e crie uma instância chamada db_digital, após isso copie o conteúdo do arquivo chamado dump e insira no bano.
+- Conecte-se ao banco de dados utlizando os dados do arquivo .env e crie uma instância chamada db_digital, após isso copie o conteúdo do arquivo chamado dump e insira no banco.
 - Entre na pasta do projeto.
 - Execute o comando python3 -m venv venv
 - No caso do linux, ative a venv com source venv/bin/activate
@@ -32,8 +32,8 @@ Caso esteja utilizando windows troque o python3 por python.
 	> POST
 
 - Entrada
-	> CPF Campo Obrigatório.
-	> first_name = Obrigatório.
+	> CPF Obrigatório,
+	> first_name = Obrigatório e
 	> last_name= Obrigatório.
 - Saída
     	
@@ -55,7 +55,7 @@ Caso esteja utilizando windows troque o python3 por python.
 	> GET
 
 - Entrada
-	> Sem Obrigatório.
+	> Sem Campo Obrigatório.
 
 - Saída
 
@@ -100,9 +100,9 @@ Caso esteja utilizando windows troque o python3 por python.
 	> POST
 
 - Entrada
-	> value Obrigatório.
-	> account_shipping Obrigatório.
-	> account_shipping Obrigatório.
+	> value Obrigatório,
+	> account_shipping Obrigatório, 
+	> account_shipping Obrigatório e
 	> type_operation Obrigatório.
 
 - Saída
