@@ -33,7 +33,8 @@ Caso esteja utilizando windows troque o python3 por python.
 	> first_name = Obrigatório.
 	> last_name= Obrigatório.
 - Saída
-    	"{
+    	
+		{
 			user": {
         	"id": 1,
         	"first_name": "Bruno",
@@ -100,16 +101,16 @@ Caso esteja utilizando windows troque o python3 por python.
 	> account_shipping Obrigatório.
 	> account_shipping Obrigatório.
 	> type_operation Obrigatório.
+
 - Saída
 
-
-	{
-		"id": 21,
- 	   "value": "2000.00",
- 	   "account_shipping": 192,
- 	   "account_received": 192,
- 	   "type_operation": 1
-	}
+		{
+			"id": 21,
+			"value": "2000.00",
+			"account_shipping": 192,
+			"account_received": 192,
+			"type_operation": 1
+		}
 
 
 ## End-Poins - Account :
@@ -125,6 +126,7 @@ Caso esteja utilizando windows troque o python3 por python.
 	> CPF Obrigatório.
 
 - Saída
+
 		{
 			"balance": 2000.0
 		}
