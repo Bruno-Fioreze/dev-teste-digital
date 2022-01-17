@@ -25,7 +25,7 @@ class TestUserBank(unittest.TestCase):
         response = self.client.post(url, data)
         data_return = response.content.decode("utf8")
         data_return = json.loads( data_return )
-        user = User.objects.get(id=data_return["id"])
+        user = User.objects.get(id=data_return["user"]["id"])
         user.delete()
         self.assertEqual(response.status_code, 200)
         
@@ -39,7 +39,7 @@ class TestUserBank(unittest.TestCase):
         response = self.client.post(url, data)
         data_return = response.content.decode("utf8")
         data_return = json.loads( data_return )
-        user = User.objects.get(id=data_return["id"])
+        user = User.objects.get(id=data_return["user"]["id"])
         response = self.client.post(url, data)
         user.delete()
         
@@ -80,7 +80,7 @@ class TransactionBank(unittest.TestCase):
         data_return = response.content.decode("utf8")
         data_return = json.loads( data_return )
         
-        user_shipping = User.objects.get(id=data_return["id"])
+        user_shipping = User.objects.get(id=data_return["user"]["id"])
         account_shipping = Account.objects.get(user_id=user_shipping.pk)
         
         url = "/transaction/"
@@ -108,7 +108,7 @@ class TransactionBank(unittest.TestCase):
         data_return = response.content.decode("utf8")
 
         data_return = json.loads( data_return )
-        user_shipping = User.objects.get(id=data_return["id"])
+        user_shipping = User.objects.get(id=data_return["user"]["id"])
         account_shipping = Account.objects.get(user_id=user_shipping.pk)
         
         url = "/transaction/"
@@ -133,7 +133,7 @@ class TransactionBank(unittest.TestCase):
         response = self.client.post(url, data)
         data_return = response.content.decode("utf8")
         data_return = json.loads( data_return )
-        user_shipping = User.objects.get(id=data_return["id"])
+        user_shipping = User.objects.get(id=data_return["user"]["id"])
         account_shipping = Account.objects.get(user_id=user_shipping.pk)
         
         data = {
@@ -144,7 +144,8 @@ class TransactionBank(unittest.TestCase):
         response = self.client.post(url, data)
         data_return = response.content.decode("utf8")
         data_return = json.loads( data_return )
-        user_receveid = User.objects.get(id=data_return["id"])
+        user_receveid = User.objects.get(id=data_return["user"]["id"])
+        
         account_receveid = Account.objects.get(user_id=user_shipping.pk)
         
         url = "/transaction/"
@@ -173,4 +174,4 @@ class AccountBank(unittest.TestCase):
     def setUp(self):
         self.client = Client()
         
-    #não fiz os testes desse end-point, pois como ele usa ferramentas do django,
+    #não fiz os testes desse end-point, pois ele usa ferramentas do django,

@@ -19,7 +19,7 @@ class AccountBalanceAPI(APIView):
         """[Função responsável por calcular o saldo da conta]
 
             Args:
-                request ([type]): [Data]
+                request ([type]): [Data] 
 
             Returns:
                 [JSON]: [Retorna o saldo]
@@ -28,7 +28,7 @@ class AccountBalanceAPI(APIView):
         user = get_object_or_404(User, cpf=cpf)
         account = get_object_or_404(Account, user_id=user.pk)
         
-        total_deposit = Transaction.objects.filter(account_shipping = account.pk, type_operation = 1 ).aggregate(Sum('value'))
+        total_deposit = Transaction.objects.filter(account_shipping = account.pk, account_received = account.pk,  type_operation = 1 ).aggregate(Sum('value'))
         total_transfer = Transaction.objects.filter(account_shipping = account.pk, type_operation = 2 ).aggregate(Sum('value'))
             
         if ( total_deposit["value__sum"] == None  ):

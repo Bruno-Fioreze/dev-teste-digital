@@ -6,5 +6,7 @@ class AccountUtils:
     def create_new_account(user: User ) -> int:
         number_account = Account.objects.count() + 1
         account = Account(agency=1, account=number_account, user=user, saldo=0.00, )
-        pk_account = account.save()
+        account.save()
+        pk_account = account.pk
         return  pk_account 
+    
