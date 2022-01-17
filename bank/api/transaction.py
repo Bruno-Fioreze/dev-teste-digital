@@ -18,20 +18,6 @@ class TransictionAPI(APIView):
         serializer = self.serializer_class(users, many=True)
         return Response(serializer.data)
 
-    def get(self, request, pk=None): 
-        pk = request.GET.get("search", None)
-        #if pk == None:
-        #    status_code, msg_or_data = ( 
-        #        StatusCode.HTTP_422_UNPROCESSABLE_ENTITY, 
-        #        "invalid parameter" 
-        #    )
-        #else:
-        transactions = self.queryset.objects.filter(id=pk)
-        serializer = self.serializer_class( transactions, many=True)
-        status_code, msg_or_data = ( StatusCode.HTTP_200_OK, serializer.data)
-      
-        return Response(msg_or_data, status=status_code)
-        
     def post(self, request, format=None): 
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid() : 

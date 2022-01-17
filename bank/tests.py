@@ -58,15 +58,6 @@ class TransactionBank(unittest.TestCase):
         response = self.client.get(url, data)
         self.assertEqual(response.status_code, 200)
     
-    def test_transaction_bank_get_search_200(self):
-        url = "/transaction/?search=1"
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
-    
-    def test_transaction_bank_get_search_exception(self):
-        url = "/transaction/?search="
-        self.assertRaises(Exception, self.client.get, url)
-    
     def test_transaction_bank_raise_exception(self):
         url = "/transaction/"
         parameters = (
