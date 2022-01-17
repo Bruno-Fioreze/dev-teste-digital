@@ -27,7 +27,7 @@ class TransactionSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"value": "the value must be greater than zero"})
         
         if ( data["type_operation"].pk == 2):
-            total_deposit = Transaction.objects.filter(account_shipping = data["account_shipping"].pk, type_operation = 1 ).aggregate(Sum('value'))
+            total_deposit = Transaction.objects.filter(account_shipping = data["account_shipping"].pk, account_received = data["account_shipping"].pk, type_operation = 1 ).aggregate(Sum('value'))
             total_transfer = Transaction.objects.filter(account_shipping = data["account_shipping"].pk, type_operation = 2 ).aggregate(Sum('value'))
             
             if ( total_deposit["value__sum"] == None  ):

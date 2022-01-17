@@ -46,8 +46,8 @@ class UserAPI(APIView):
             with transaction.atomic():
                 try:
                     user = serializer.save()
-                    AccountUtils.create_new_account( user )
-                    message_or_data  = serializer.data
+                    pk_account = AccountUtils.create_new_account( user )
+                    message_or_data  = {"user": serializer.data, "pk_account": pk_account }
                 except Exception as e:
                     transaction.set_rollback(True) 
                     status_code, message_or_data = ( StatusCode.HTTP_424_FAILED_DEPENDENCY, "Failed Dependency")
