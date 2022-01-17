@@ -5,6 +5,20 @@ from django.db.models import Sum
 class TransactionSerializer(serializers.ModelSerializer): 
     
     def validate(self, data):
+        """[Função responsável por validar]
+
+        Args:
+            data ([type]): [Data]
+
+        Raises:
+            serializers.ValidationError: [Limita os depósitos a 2000.]
+            serializers.ValidationError: [Não deixa transferir ou depósitar valores negativos.]
+            serializers.ValidationError: [Não deixa transferir ou depósitar valor igual a 0.]
+            serializers.ValidationError: [Não deixa transferir se não possuir saldo.]
+
+        Returns:
+            [type]: [description]
+        """
         if ( data["type_operation"].pk == 1 and data["value"] > data["type_operation"].max_value ):        
             raise serializers.ValidationError({"value": "Deposits greater than 2000 are not allowed"})
         if ( data["value"] < 0  ):        

@@ -18,11 +18,27 @@ class UserAPI(APIView):
     serializer_class = UserSerializer
     
     def get(self, request, format=None):
+        """[Função responsável por listar os usuários]
+
+        Args:
+            request ([type]): [Data]
+
+        Returns:
+            [JSON]: [Retorna uma lista de usuários.]
+        """
         users = self.queryset.objects.values("id","first_name", "last_name", "cpf").all()
         serializer = self.serializer_class(users, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None): 
+        """[Função responsável por cadastrar o usuário e criar a sua conta.]
+
+        Args:
+            request ([type]): [description]
+
+        Returns:
+            [JSON]: [Retorna o erro ou os dados.]
+        """
         serializer = self.serializer_class(data=request.data)
         status_code = StatusCode.HTTP_200_OK
         

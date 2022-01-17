@@ -14,6 +14,14 @@ class TransictionAPI(APIView):
     serializer_class = TransactionSerializer
     
     def get(self, request, format=None): 
+        """[Função responsável por listar as transações.]
+
+        Args:
+            request ([type]): [Data]
+
+        Returns:
+            [JSON]: [Retorna um json com uma lista de transações.]
+        """
         users = self.queryset.objects.all()
         serializer = self.serializer_class(users, many=True)
         return Response(serializer.data)

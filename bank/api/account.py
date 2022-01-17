@@ -16,7 +16,14 @@ class AccountBalanceAPI(APIView):
     serializer_class = AccountBalanceSerializer
     
     def get(self, request):
-        
+        """[Função responsável por calcular o saldo da conta]
+
+            Args:
+                request ([type]): [Data]
+
+            Returns:
+                [JSON]: [Retorna o saldo]
+        """
         cpf = request.GET.get("cpf")
         user = get_object_or_404(User, cpf=cpf)
         account = get_object_or_404(Account, user_id=user.pk)
