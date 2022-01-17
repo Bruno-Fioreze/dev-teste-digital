@@ -13,11 +13,14 @@ Caso esteja utilizando windows troque o python3 por python.
 
 - Execute o seguinte comando:
 - sudo docker run -p 3306:3306 --name db_digital -e MYSQL_ROOT_PASSWORD=db_digital -d mysql:latest
+- Conecte-se ao banco de dados utlizando os dados do arquivo .env e crie uma instância chamada db_digital, após isso copie o conteúdo do arquivo chamado dump e insira no bano.
 - Entre na pasta do projeto.
 - Execute o comando python3 -m venv venv
 - No caso do linux, ative a venv com source venv/bin/activate
 - No caso do windows, ative a venv com venv/Scripts/Activate
 - Execute o comando pip install -r requirements.txt
+- Execute o comando python manage.py makemigrations
+- Execute o comando python manage.py migrate
 - Execute o comando python3 manage.py runserver
 
 ## End-Poins - Users :
